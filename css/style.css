@@ -1,0 +1,255 @@
+/* ==================== BASE ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ==================== CONTENEUR ==================== */
+.container {
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  margin-top: 30px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+/* ==================== FORMULAIRE ==================== */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+#taskInput:focus {
+  border-color: #667eea;
+}
+
+#addBtn {
+  padding: 12px 20px;
+  background: #667eea;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.1s;
+}
+
+#addBtn:hover {
+  background: #5568d3;
+}
+
+#addBtn:active {
+  transform: scale(0.97);
+}
+
+/* ==================== FILTRES ==================== */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 8px;
+  border: 2px solid #e0e0e0;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #555;
+  transition: all 0.3s;
+}
+
+.filter-btn.active {
+  background: #667eea;
+  color: #fff;
+  border-color: #667eea;
+}
+
+.filter-btn:hover:not(.active) {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+/* ==================== LISTE DES TÂCHES ==================== */
+#taskList {
+  list-style: none;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: background 0.2s, transform 0.2s;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.task-item:hover {
+  background: #f0f0f0;
+}
+
+.task-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #667eea;
+  flex-shrink: 0;
+}
+
+.task-item span {
+  flex: 1;
+  color: #333;
+  font-size: 1rem;
+  word-break: break-word;
+  transition: all 0.3s;
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.delete-btn {
+  background: #ff4757;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  background: #e63946;
+}
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  padding: 30px 10px;
+  font-style: italic;
+}
+
+.counter {
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: 15px;
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+footer .footer-name {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+footer .github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  transition: all 0.3s;
+  font-size: 0.85rem;
+}
+
+footer .github-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
+footer .github-link svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+footer .year {
+  opacity: 0.8;
+  font-size: 0.8rem;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 480px) {
+  .container { padding: 18px; }
+  h1 { font-size: 1.5rem; }
+  #taskInput, #addBtn { font-size: 0.9rem; padding: 10px 12px; }
+  footer { font-size: 0.8rem; }
+}
